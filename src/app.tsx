@@ -16,10 +16,6 @@ import galleryMilk from "./assets/desktop/image-gallery-milkbottles.jpg";
 import galleryOrange from "./assets/desktop/image-gallery-orange.jpg";
 import galleryCone from "./assets/desktop/image-gallery-cone.jpg";
 import gallerySugarcubes from "./assets/desktop/image-gallery-sugarcubes.jpg";
-import facebook from "./assets/icon-facebook.svg";
-import pinterest from "./assets/icon-pinterest.svg";
-import instagram from "./assets/icon-instagram.svg";
-import twitter from "./assets/icon-twitter.svg";
 
 export function App() {
   const style = {
