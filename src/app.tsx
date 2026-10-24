@@ -1,5 +1,6 @@
 import "@fontsource-variable/fraunces";
 import "@fontsource/barlow/500.css";
+import "@fontsource/barlow/600.css";
 import "@fontsource/barlow/800.css";
 import { cn } from "cn";
 
@@ -16,6 +17,8 @@ import galleryMilk from "./assets/desktop/image-gallery-milkbottles.jpg";
 import galleryOrange from "./assets/desktop/image-gallery-orange.jpg";
 import galleryCone from "./assets/desktop/image-gallery-cone.jpg";
 import gallerySugarcubes from "./assets/desktop/image-gallery-sugarcubes.jpg";
+import hamburger from "./assets/icon-hamburger.svg";
+import { useState } from "preact/hooks";
 
 export function App() {
   const style = {
@@ -25,13 +28,14 @@ export function App() {
     "text-grey-950": "text-[hsl(212,27%,19%)]",
     "text-grey-600": "text-[hsl(213,9%,39%)]",
   };
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <main>
       <section className="relative min-h-screen">
         <header
           className={cn(
             style["font-barlow"],
-            "relative z-2 p-6 lg:p-10 text-white flex items-center justify-between",
+            "relative z-3 p-6 lg:p-10 text-white flex items-center justify-between",
           )}
         >
           <a className="text-3xl bottom-0" style={{ fontWeight: "900" }}>
@@ -63,6 +67,49 @@ export function App() {
               </li>
             </ul>
           </nav>
+          <button
+            className="ml-auto block lg:hidden relative"
+            onClick={() => setIsOpen((prev) => !prev)}
+          >
+            <img src={hamburger} />
+          </button>
+          {isOpen && (
+            <div className="absolute -bottom-80 right-0 w-full p-6">
+              <nav className="bg-white p-10 text-black/50">
+                <div className="w-10 h-10 absolute top-0 right-6">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 0 100 L 100 0 L 100 100 Z" fill="#ffffff" />
+                  </svg>
+                </div>
+                <ul
+                  className={cn(
+                    style["font-barlow"],
+                    "flex flex-col items-center text-xl gap-6",
+                  )}
+                >
+                  <li style={{ fontWeight: "600" }}>
+                    <a>About</a>
+                  </li>
+                  <li style={{ fontWeight: "600" }}>
+                    <a>Services</a>
+                  </li>
+                  <li style={{ fontWeight: "600" }}>
+                    <a>Projects</a>
+                  </li>
+                  <li>
+                    <button
+                      className={cn(
+                        style["font-fraunces"],
+                        "bg-[hsl(51,100%,49%)] text-black py-2 px-3 rounded-full text-sm h-12 w-33 hover:bg-[hsl(51,100%,49%)]/30 hover:text-white cursor-pointer",
+                      )}
+                    >
+                      <p style={{ fontWeight: "900" }}>CONTACT</p>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          )}
         </header>
         <div className="relative z-2 text-center text-white">
           <h1
